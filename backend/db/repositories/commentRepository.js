@@ -9,8 +9,8 @@ class CommentRepository {
     }
   }
 
-  static async getCommentsByPostID(postId) {
-    const comments = await Application.find({ postId }).sort({
+  static async getCommentsByPostId(id) {
+    const comments = await Application.find({ postId: id }).sort({
       createdAt: -1,
     });
 
