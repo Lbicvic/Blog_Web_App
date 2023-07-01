@@ -11,8 +11,8 @@ Projekt izrađen korištenjem MERN stack-a
 * Node.js
 
 # !!! First time run !!!
-* install required packages with `npm install`
 * run 2 terminals *(one for frontend and other for backend)*
+* install required packages with `npm install`
 
 # How to run?
 ## Backend
