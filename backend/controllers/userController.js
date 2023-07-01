@@ -8,7 +8,6 @@ class UserController {
     try {
       const user = await Helpers.checkLoginData(username, password);
       const token = Helpers.createToken(user._id);
-      req.user = user._id;
       const responseData = Helpers.getUserDataForResponse(user);
       res.status(200).json({ data: responseData, token });
     } catch (error) {
