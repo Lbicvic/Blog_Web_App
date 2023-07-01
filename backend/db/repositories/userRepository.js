@@ -8,6 +8,10 @@ class UserRepository {
   static async getUserById(id) {
     return await User.findOne({ _id: id });
   }
+
+  static async getUserByUsername(username) {
+    return await User.findOne({ username });
+  }
 }
 
 module.exports = UserRepository;
