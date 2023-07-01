@@ -8,3 +8,5 @@ userRouter.post("/login", UserController.loginUser);
 userRouter.post("/register", UserController.registerUser);
 
 userRouter.post("/getUser", UserController.getCurrentUser, AuthMiddleware.requireAuth);
+
+module.exports = userRouter;
