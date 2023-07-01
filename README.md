@@ -1,7 +1,7 @@
 # Blog_Web_App
 
 # Disclamer
-Web aplikaciju izradili *Leopold Bičvić* i *Mislav Kostić*  kolegij za kolegij *Napredno Web Programiranje*
+Web aplikaciju izradili <u>Leopold Bičvić</u> i <u>Mislav Kostić</u>  za kolegij *Napredno Web Programiranje*
 
 # About
 Projekt izrađen korištenjem MERN stack-a
