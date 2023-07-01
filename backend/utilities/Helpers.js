@@ -56,7 +56,7 @@ class Helpers {
 
     const hashPassword = await bcrypt.hash(password, 10);
 
-    const user = await this.create({
+    const user = await UserRepository.save({
       username,
       email,
       password: hashPassword,
