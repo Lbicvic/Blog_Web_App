@@ -60,7 +60,7 @@ const UpdateBlogForm = () => {
       {!isLoading && (
         <section className="update">
           <div className="update__wrapper">
-            <h2> Update Service</h2>
+            <h2> Update Post</h2>
             <form onSubmit={handleSubmit} className="form__wrapper">
               <input
                 type="text"
