@@ -57,7 +57,8 @@
 }
 
 .login__wrapper,
-.register__wrapper {
+.register__wrapper,
+.update__wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -119,22 +120,22 @@
   padding: 1rem 3rem;
 }
 
-.comment__wrapper{
+.comment__wrapper {
   background-color: #f3f3f3;
 }
 
-.comment__content{
-  padding: .5rem;
+.comment__content {
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.comment__content p{
+.comment__content p {
   margin: 0;
 }
 
-.comment__content button{
+.comment__content button {
   align-self: flex-end;
 }
 

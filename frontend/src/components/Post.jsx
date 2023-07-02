@@ -55,7 +55,7 @@ const Post = ({
                     <p>
                       Posted by: <span className="text-italic">{username}</span>
                     </p>
-                    <p>Created On: {new Date(createdAt).toDateString()}</p>
+                    <p>Created On: {new Date(createdAt).toLocaleString()}</p>
                   </div>
                 </div>
               </div>
@@ -84,13 +84,13 @@ const Post = ({
                   </p>
                   {createdAt !== updatedAt && (
                     <>
-                      <p>Created On: {new Date(createdAt).toDateString()}</p>
-                      <p>Last Update: {new Date(updatedAt).toDateString()}</p>
+                      <p>Created On: {new Date(createdAt).toLocaleString()}</p>
+                      <p>Last Update: {new Date(updatedAt).toLocaleString()}</p>
                     </>
                   )}
                   {createdAt === updatedAt && (
                     <>
-                      <p>Created On: {new Date(createdAt).toDateString()}</p>
+                      <p>Created On: {new Date(createdAt).toLocaleString()}</p>
                     </>
                   )}
                 </div>
@@ -120,13 +120,13 @@ const Post = ({
                   </p>
                   {createdAt !== updatedAt && (
                     <>
-                      <p>Created On: {new Date(createdAt).toDateString()}</p>
-                      <p>Last Update: {new Date(updatedAt).toDateString()}</p>
+                      <p>Created On: {new Date(createdAt).toLocaleString()}</p>
+                      <p>Last Update: {new Date(updatedAt).toLocaleString()}</p>
                     </>
                   )}
                   {createdAt === updatedAt && (
                     <>
-                      <p>Created On: {new Date(createdAt).toDateString()}</p>
+                      <p>Created On: {new Date(createdAt).toLocaleString()}</p>
                     </>
                   )}
                 </div>

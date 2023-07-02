@@ -8,6 +8,7 @@ import RegisterForm from "./components/forms/RegisterForm";
 import Homepage from "./pages/Homepage";
 import NewBlogPage from "./pages/NewBlogPage";
 import PostDetails from "./components/PostDetails";
+import UpdateBlogForm from "./components/forms/UpdateBlogForm";
 
 function App() {
   const { setCurrentUser } = useContext(AuthContext);
@@ -41,6 +42,7 @@ function App() {
             <Route path="/homepage" element={<Homepage />}></Route>
             <Route path="/newBlog" element={<NewBlogPage />}></Route>
             <Route path="/postDetails/:id" element={<PostDetails />}></Route>
+            <Route path="/updatePost" element={<UpdateBlogForm />}></Route>
           </Routes>
         </Router>
       </>
