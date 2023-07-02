@@ -2,13 +2,12 @@ import React from "react";
 import { useRef, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import AuthContext from "../context/AuthContext";
+import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 
-const RegisterForm = () => {
+const LoginForm = () => {
   const usernameRef = useRef();
   const passwordRef = useRef();
-  const emailRef = useRef();
   const navigate = useNavigate();
   const { setCurrentUser } = useContext(AuthContext);
   const [error, setError] = useState("");
@@ -19,11 +18,10 @@ const RegisterForm = () => {
     const user = {
       username: usernameRef.current.value,
       password: passwordRef.current.value,
-      email: emailRef.current.value,
     };
 
     axios
-      .post("/user/register", JSON.stringify(user), {
+      .post("/user/login", JSON.stringify(user), {
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
@@ -39,24 +37,16 @@ const RegisterForm = () => {
   }
 
   return (
-    <section className="register-form">
-      <div className="register-form__wrapper">
-        <h2>Register</h2>
+    <section className="login">
+      <div className="login__wrapper">
+        <h2>Login</h2>
         {error && <div className="error"> {error} </div>}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form__wrapper">
           <input
             type="text"
             name="username"
             placeholder="Username"
             ref={usernameRef}
-            required
-          />
-           <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            autoComplete="on"
-            ref={emailRef}
             required
           />
           <input
@@ -67,11 +57,11 @@ const RegisterForm = () => {
             ref={passwordRef}
             required
           />
-          <button type="submit">Register</button>
+          <button type="submit">Log in</button>
           <p>
-            Already have an account?{" "}
-            <Link to="/" className="form__link">
-              Log in
+            Need an account?{" "}
+            <Link to="/register" className="form__link">
+              Register
             </Link>
           </p>
         </form>
@@ -80,4 +70,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default LoginForm;

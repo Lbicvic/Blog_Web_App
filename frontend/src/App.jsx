@@ -1,29 +1,27 @@
 import { useContext, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import axios from "axios";
-import './App.css'
+import "./App.css";
 import AuthContext from "./context/AuthContext";
-import LoginForm from "./components/LoginForm";
-import RegisterForm from "./components/RegisterForm";
+import LoginForm from "./components/forms/LoginForm";
+import RegisterForm from "./components/forms/RegisterForm";
+import Homepage from "./pages/Homepage";
+import NewBlogPage from "./pages/NewBlogPage";
+import PostDetails from "./components/PostDetails";
 
 function App() {
   const { setCurrentUser } = useContext(AuthContext);
 
+  axios.defaults.baseURL = "http://localhost:3005";
   if (localStorage.getItem("user")) {
-    axios.defaults.baseURL = 'http://localhost:3005';
     axios.defaults.headers.common = {
-      authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`,
+      authorization: `Bearer ${JSON.parse(localStorage.getItem("user"))}`,
     };
   }
 
   useEffect(() => {
     axios
       .get("/user/getUser", {
-        withCredentials: true,
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
@@ -35,16 +33,19 @@ function App() {
   });
   return (
     <>
-       <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<LoginForm />} ></Route>
-          <Route path="/register" element={<RegisterForm />} ></Route>
-        </Routes>
-      </Router>
+      <>
+        <Router>
+          <Routes>
+            <Route path="/" element={<LoginForm />}></Route>
+            <Route path="/register" element={<RegisterForm />}></Route>
+            <Route path="/homepage" element={<Homepage />}></Route>
+            <Route path="/newBlog" element={<NewBlogPage />}></Route>
+            <Route path="/postDetails/:id" element={<PostDetails />}></Route>
+          </Routes>
+        </Router>
+      </>
     </>
-    </>
-  )
+  );
 }
 
-export default App
+export default App;
