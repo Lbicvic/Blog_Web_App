@@ -8,6 +8,7 @@ import axios from "axios";
 import './App.css'
 import AuthContext from "./context/AuthContext";
 import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
 
 function App() {
   const { setCurrentUser } = useContext(AuthContext);
@@ -38,6 +39,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LoginForm />} ></Route>
+          <Route path="/register" element={<RegisterForm />} ></Route>
         </Routes>
       </Router>
     </>
