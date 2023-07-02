@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import axios from "axios";
 
 const Post = ({
   _id,
@@ -13,6 +14,25 @@ const Post = ({
   is_postDetails,
 }) => {
   const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const updatePost = (id) => {
+    navigate("/updatePost", { state: id });
+  };
+
+  const deletePost = (id) => {
+    axios
+      .delete(`/posts/${id}`, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        navigate("/homepage");
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  };
+
   return (
     <>
       {!is_postDetails && (
@@ -76,8 +96,8 @@ const Post = ({
                 </div>
               </div>
               <div className="post__buttons">
-                <button>Update</button>
-                <button>Delete</button>
+                <button onClick={() => updatePost(_id)}>Update</button>
+                <button onClick={() => deletePost(_id)}>Delete</button>
               </div>
             </div>
           )}

@@ -1,3 +1,4 @@
+const CommentRepository = require("../db/repositories/commentRepository");
 const PostRepository = require("../db/repositories/postRepository");
 const mongoose = require("mongoose");
 
@@ -54,6 +55,10 @@ class PostController {
       return res.status(404).json({ error: "Post not found" });
     }
     try {
+      const { comments } = await CommentRepository.getCommentsByPostId(id);
+      comments.map(async (comment) => {
+        await CommentRepository.deleteComment(comment._id);
+      });
       const post = await PostRepository.deletePost(id);
       res.status(200).json(post);
     } catch (error) {

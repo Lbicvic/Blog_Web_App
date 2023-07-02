@@ -58,10 +58,10 @@ const NewBlogForm = () => {
               ref={descriptionRef}
               required
             />
-            <label htmlFor="picture">Choose Picture:</label>
+            <label htmlFor="postImage">Choose Picture:</label>
             <input
               type="file"
-              name="picture"
+              name="postImage"
               accept="image/*"
               onChange={(e) => {
                 setImage(URL.createObjectURL(e.target.files[0]));
