@@ -3,6 +3,8 @@ import axios from "axios";
 import Post from "./Post";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
+import NewCommentForm from "./forms/NewCommentForm";
+import Comments from "./Comments";
 
 const PostDetails = () => {
   const { id } = useParams();
@@ -31,7 +33,8 @@ const PostDetails = () => {
       {!isLoading && (
         <>
           <Post {...post} key={post._id} is_postDetails={true} />
-          <p>Comments incoming</p>
+          <NewCommentForm postId={post._id} />
+          <Comments postId={post._id} />
         </>
       )}
     </>

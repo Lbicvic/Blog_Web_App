@@ -12,6 +12,20 @@ const LoginForm = () => {
   const { setCurrentUser } = useContext(AuthContext);
   const [error, setError] = useState("");
 
+  if (localStorage.getItem("user")) {
+    axios
+    .get("/user/getUser", {
+      headers: { "Content-Type": "application/json" },
+    })
+    .then((response) => {
+      setCurrentUser(response.data);
+      navigate("/homepage");
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+    });
+  }
+  
   async function handleSubmit(e) {
     e.preventDefault();
 

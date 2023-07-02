@@ -17,9 +17,37 @@ const Post = ({
     <>
       {!is_postDetails && (
         <>
-          <Link to={`/postDetails/${_id}`}>
-            <div className="post">
-              <div className="post__wrapper">
+          <li>
+            <Link to={`/postDetails/${_id}`}>
+              <div className="post">
+                <div className="post__wrapper">
+                  {image && (
+                    <img
+                      src={image}
+                      alt="Post Image"
+                      width={"auto"}
+                      height={"300px"}
+                    ></img>
+                  )}
+                  <div className="post__content">
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                    <p>
+                      Posted by: <span className="text-italic">{username}</span>
+                    </p>
+                    <p>Created On: {new Date(createdAt).toDateString()}</p>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </li>
+        </>
+      )}
+      {is_postDetails && (
+        <>
+          {currentUser.username === username && (
+            <div className="post is-details">
+              <div className="post__wrapper is-details">
                 {image && (
                   <img
                     src={image}
@@ -31,41 +59,31 @@ const Post = ({
                 <div className="post__content">
                   <h3>{title}</h3>
                   <p>{description}</p>
-                  <p>Posted by: {username}</p>
-                  <p>Created: {createdAt}</p>
+                  <p>
+                    Posted by: <span className="text-italic">{username}</span>
+                  </p>
+                  {createdAt !== updatedAt && (
+                    <>
+                      <p>Created On: {new Date(createdAt).toDateString()}</p>
+                      <p>Last Update: {new Date(updatedAt).toDateString()}</p>
+                    </>
+                  )}
+                  {createdAt === updatedAt && (
+                    <>
+                      <p>Created On: {new Date(createdAt).toDateString()}</p>
+                    </>
+                  )}
                 </div>
               </div>
-            </div>
-          </Link>
-        </>
-      )}
-      {is_postDetails && (
-        <>
-          {currentUser.username === username && (
-            <div className="post">
-              <div className="post__wrapper is-details">
-                <h3>{title}</h3>
-                {image && (
-                  <img
-                    src={image}
-                    alt="Post Image"
-                    width={"auto"}
-                    height={"300px"}
-                  ></img>
-                )}
-                <p>{description}</p>
-                <p>Posted by: {username}</p>
-                <p>Created: {createdAt}</p>
-                <p>Last Update: {updatedAt}</p>
+              <div className="post__buttons">
+                <button>Update</button>
+                <button>Delete</button>
               </div>
-              <button>Update Post</button>
-              <button>Delete Post</button>
             </div>
           )}
           {currentUser.username !== username && (
-            <div className="post">
+            <div className="post is-details">
               <div className="post__wrapper is-details">
-                <h3>{title}</h3>
                 {image && (
                   <img
                     src={image}
@@ -74,10 +92,24 @@ const Post = ({
                     height={"300px"}
                   ></img>
                 )}
-                <p>{description}</p>
-                <p>Posted by: {username}</p>
-                <p>Created: {createdAt}</p>
-                <p>Last Update: {updatedAt}</p>
+                <div className="post__content">
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                  <p>
+                    Posted by: <span className="text-italic">{username}</span>
+                  </p>
+                  {createdAt !== updatedAt && (
+                    <>
+                      <p>Created On: {new Date(createdAt).toDateString()}</p>
+                      <p>Last Update: {new Date(updatedAt).toDateString()}</p>
+                    </>
+                  )}
+                  {createdAt === updatedAt && (
+                    <>
+                      <p>Created On: {new Date(createdAt).toDateString()}</p>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           )}

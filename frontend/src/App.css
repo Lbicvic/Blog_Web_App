@@ -54,7 +54,6 @@
 
 .login,
 .register {
-  
 }
 
 .login__wrapper,
@@ -65,20 +64,79 @@
   align-items: center;
 }
 
-.post{
+.post {
   padding: 1rem 1.5rem;
 }
 
-.post__wrapper{
+.post__wrapper {
+  max-width: 50rem;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
 }
 
-.post__wrapper.is-details{
+.post.is-details {
   display: flex;
   flex-direction: column;
-  justify-content: unset;
-  gap: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.post__wrapper.is-details .post__content {
+  width: 80%;
+  padding: 0 1.5rem;
+}
+
+.post__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.comment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+}
+
+.comment form {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.comment input {
+  width: 30%;
+}
+
+.post__comment {
+  padding: 1rem 3rem;
+}
+
+.comment__wrapper{
+  background-color: #f3f3f3;
+}
+
+.comment__content{
+  padding: .5rem;
+}
+
+.text-italic {
+  font-weight: 700;
+  font-style: italic;
+}
+
+.text-center {
+  text-align: center;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
 }
