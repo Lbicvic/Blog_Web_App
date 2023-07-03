@@ -43,7 +43,7 @@ const Post = ({
                 <div className="post__wrapper">
                   {image && (
                     <img
-                      src={image}
+                      src={image.url}
                       alt="Post Image"
                       width={"auto"}
                       height={"300px"}
@@ -70,7 +70,7 @@ const Post = ({
               <div className="post__wrapper is-details">
                 {image && (
                   <img
-                    src={image}
+                    src={image.url}
                     alt="Post Image"
                     width={"auto"}
                     height={"300px"}
@@ -106,7 +106,7 @@ const Post = ({
               <div className="post__wrapper is-details">
                 {image && (
                   <img
-                    src={image}
+                    src={image.url}
                     alt="Post Image"
                     width={"auto"}
                     height={"300px"}

@@ -13,13 +13,20 @@ const NewBlogForm = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
+  const convertFileToBase64 = async (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => setImage(reader.result);
+    reader.onerror = (error) => console.log(error);
+  };
+
   async function handleSubmit(e) {
     e.preventDefault();
 
     const post = {
       title: titleRef.current.value,
       description: descriptionRef.current.value,
-      image: postPic,
+      image: image,
       username: currentUser.username,
     };
 
@@ -64,7 +71,7 @@ const NewBlogForm = () => {
               name="postImage"
               accept="image/*"
               onChange={(e) => {
-                setImage(URL.createObjectURL(e.target.files[0]));
+                convertFileToBase64(e.target.files[0]);
               }}
               required
             />

@@ -83,11 +83,11 @@
 }
 
 .post__wrapper img {
-  width: 50%;
+  width: auto;
+  object-fit: cover;
 }
 
 .post__content {
-  width: 50%;
 }
 
 .post__content p,
@@ -192,4 +192,15 @@ li a:hover{
 ::selection {
   color: #ffffff;
   background-color: #888;
+}
+
+@media (max-width: 600px) {
+  .post__wrapper{
+    flex-direction: column;
+  }
+
+  .post__wrapper img {
+    object-fit: unset;
+    aspect-ratio: 1/1;
+  }
 }

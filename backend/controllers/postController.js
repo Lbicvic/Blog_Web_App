@@ -1,6 +1,7 @@
 const CommentRepository = require("../db/repositories/commentRepository");
 const PostRepository = require("../db/repositories/postRepository");
 const mongoose = require("mongoose");
+const cloudinary = require("../middleware/cloudinaryMiddleware");
 
 class PostController {
   static async getPosts(req, res) {
@@ -13,9 +14,21 @@ class PostController {
   }
 
   static async addPost(req, res) {
-    const postData = req.body;
+    const { title, description, image, username } = req.body;
     try {
-      const post = await PostRepository.save(postData);
+      const uploadPostImage = await cloudinary.uploader.upload(image, {
+        folder: "posts",
+      });
+      const newPostData = {
+        title,
+        description,
+        image: {
+          public_id: uploadPostImage.public_id,
+          url: uploadPostImage.secure_url,
+        },
+        username,
+      };
+      const post = await PostRepository.save(newPostData);
       res.status(200).json(post);
     } catch (error) {
       res.status(400).json({ error: error.message });
@@ -60,7 +73,8 @@ class PostController {
         await CommentRepository.deleteComment(comment._id);
       });
       const post = await PostRepository.deletePost(id);
-      res.status(200).json(post);
+      await cloudinary.uploader.destroy(post.image.public_id);
+      res.status(200).json({message: "Post deleted"});
     } catch (error) {
       res.status(404).json({ error: "Post not found" });
     }
