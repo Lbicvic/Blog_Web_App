@@ -67,6 +67,10 @@
 
 .post {
   padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .post__wrapper {
@@ -78,17 +82,32 @@
   gap: 1.5rem;
 }
 
+.post__wrapper img {
+  width: 50%;
+}
+
+.post__content {
+  width: 50%;
+}
+
+.post__content p,
+.comment__content p {
+  text-align: justify;
+  text-justify: inter-word;
+  word-break: break-word;
+}
+
 .post.is-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 2rem;
 }
 
 .post__wrapper.is-details .post__content {
   width: 80%;
   padding: 0 1.5rem;
+}
+
+.post__wrapper.is-details img {
+  width: auto;
 }
 
 .post__buttons {
@@ -126,6 +145,7 @@
 
 .comment__content {
   padding: 0.5rem;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -137,6 +157,7 @@
 
 .comment__content button {
   align-self: flex-end;
+  position: absolute;
 }
 
 .text-italic {
@@ -148,7 +169,27 @@
   text-align: center;
 }
 
+.text-date {
+  font-style: italic;
+  font-size: 0.5rem;
+  font-size: clamp(0.5rem, calc(0.324rem + 0.751vw), 0.8rem);
+}
+
 ul {
   padding: 0;
   list-style-type: none;
+}
+
+li a {
+  text-decoration: none;
+  color: black;
+}
+
+li a:hover{
+  opacity: 0.6;
+}
+
+::selection {
+  color: #ffffff;
+  background-color: #888;
 }

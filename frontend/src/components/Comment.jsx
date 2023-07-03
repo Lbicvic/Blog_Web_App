@@ -30,7 +30,7 @@ const Comment = ({ _id, username, content, createdAt }) => {
                 <span className="text-italic">{username}</span>
               </p>
               <p>{content}</p>
-              <p>Posted On: {new Date(createdAt).toDateString()}</p>
+              <p className="text-date">Posted On: {new Date(createdAt).toDateString()}</p>
             </div>
           </div>
         </div>

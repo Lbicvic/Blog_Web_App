@@ -25,7 +25,7 @@ const Navbar = () => {
             <div className="nav__links">
               <Link to="/newBlog"> Post New Blog </Link>
             </div>
-            {currentUser && <p>{currentUser.username}</p>}
+            {currentUser && <p className="text-italic">{currentUser.username}</p>}
             <button onClick={handleLogout}>Log out</button>
           </nav>
         </div>
