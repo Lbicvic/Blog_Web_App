@@ -52,6 +52,7 @@ const LoginForm = () => {
 
   return (
     <section className="login">
+      <p className="text-center login__header">Welcome to Blog app!</p>
       <div className="login__wrapper">
         <h2>Login</h2>
         {error && <div className="error"> {error} </div>}

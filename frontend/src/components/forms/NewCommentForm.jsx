@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { useState } from "react";
 import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 
 const NewCommentForm = ({ postId }) => {
   const { currentUser } = useContext(AuthContext);
-  const [content, setContent] = useState("");
+  const contentRef = useRef();
   const [error, setError] = useState("");
 
   async function handleSubmit(e) {
@@ -14,7 +14,7 @@ const NewCommentForm = ({ postId }) => {
     const comment = {
       username: currentUser.username,
       postId: postId,
-      content: content,
+      content: contentRef.current.value,
     };
 
     axios
@@ -23,7 +23,6 @@ const NewCommentForm = ({ postId }) => {
       })
       .then((response) => {
         setError("");
-        setContent("");
       })
       .catch((error) => {
         console.log(error.response.data);
@@ -45,9 +44,7 @@ const NewCommentForm = ({ postId }) => {
           type="text"
           name="commentContent"
           placeholder="Enter Comment"
-          onChange={(e) => {
-            setContent(e.target.value);
-          }}
+          ref={contentRef}
           onKeyDown={handleKeyDown}
           required
         />
